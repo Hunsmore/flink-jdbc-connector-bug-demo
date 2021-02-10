@@ -17,6 +17,19 @@ public class App
                 .inBatchMode().build();
         TableEnvironment tEnv = TableEnvironment.create(settings);
 
+//        String sinkSql = "CREATE TABLE `example_table` (\n" +
+//                "  `str_col` VARCHAR(2000),\n" +
+//                "  `int_col` BIGINT\n" +
+//                ")\n" +
+//                "COMMENT ''\n" +
+//                "WITH (\n" +
+//                "  'connector' = 'jdbc',\n" +
+//                "  'username' = 'root',\n" +
+//                "  'password' = 'root',\n" +
+//                "  'table-name' = 'example_table',\n" +
+//                "  'url' = 'jdbc:mysql://127.0.0.1:3306/flink_demo'\n" +
+//                ")";
+
         String sinkSql = "CREATE TABLE `example_table` (\n" +
                 "  `str_col` VARCHAR(2000),\n" +
                 "  `int_col` BIGINT\n" +
@@ -24,11 +37,12 @@ public class App
                 "COMMENT ''\n" +
                 "WITH (\n" +
                 "  'connector' = 'jdbc',\n" +
-                "  'username' = 'root',\n" +
+                "  'username' = 'postgres',\n" +
                 "  'password' = 'root',\n" +
                 "  'table-name' = 'example_table',\n" +
-                "  'url' = 'jdbc:mysql://127.0.0.1:3306/flink_demo'\n" +
+                "  'url' = 'jdbc:postgresql://127.0.0.1:5432/postgres'\n" +
                 ")";
+
         System.out.println(sinkSql);
         tEnv.executeSql(sinkSql);
 
